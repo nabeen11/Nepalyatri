@@ -1,8 +1,8 @@
 import { useState, React, useEffect } from "react";
 import Slider1 from "/image/slider1.jpg";
 import Slider2 from "/image/slider2.jpg";
-import Slider3 from "/image/slider3.jpg";
-import Slider4 from "/image/slider2.jpg";
+import Slider3 from "/image/langtang.jpg";
+import Slider4 from "/image/pokhara.jpg";
 import LocationPin from "/image/location.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,8 +11,12 @@ import {
   faPersonRunning,
   faClock,
   faMoneyBill,
+  faStar,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Searchbox from "./Searchbox";
+import Package from "./Package";
 
 const carousel = [Slider1, Slider2, Slider3, Slider4];
 
@@ -29,6 +33,15 @@ const destination = [
   { id: 10, name: "Tilicho Tour" },
 ];
 
+const activity = [
+  { id: 1, destinationId: 1, name: "Rafting" },
+  { id: 2, destinationId: [4, 7, 8], name: "Paragliding" },
+  { id: 3, destinationId: [1, 2, 3, 4, , 5, 6, 9], name: "Sight Seeing" },
+  { id: 4, destinationId: 4, name: "Bunjee Jumping" },
+  { id: 5, destinationId: [1, 2, 3, 4], name: "Camping" },
+  { id: 6, destinationId: 10, name: "Rock Climbing" },
+];
+
 const duration = [
   { id: 1, name: "1 Day" },
   { id: 2, name: "2 Days" },
@@ -36,13 +49,35 @@ const duration = [
   { id: 4, name: "7 Days" },
 ];
 
-const activity = [
-  { id: 1, name: "Rafting" },
-  { id: 2, name: "Paragliding" },
-  { id: 3, name: "Sight Seeing" },
-  { id: 4, name: "Bunjee Jumping" },
-  { id: 5, name: "Camping" },
-  { id: 6, name: "Rock Climbing" },
+const packages = [
+  {
+    id: 1,
+    title: "Kathmandu Tour - 2 Days",
+    activities: "Heritage Tour",
+    price: "5,000",
+    image: Slider1,
+  },
+  {
+    id: 2,
+    title: "Everest Base Camp - 4 Days-3 Nights",
+    activities: "Trekking",
+    price: "15,000",
+    image: Slider2,
+  },
+  {
+    id: 3,
+    title: "Pokhara Tour - 2 Days-1 Night",
+    activities: "Paragliding",
+    price: "10,000",
+    image: Slider4,
+  },
+  // {
+  //   id: 4,
+  //   title: "Langtang Tour - 2 Days-1 Night",
+  //   activities: "Hiking",
+  //   price: "10,000",
+  //   image: Slider3,
+  // },
 ];
 
 export default function Home() {
@@ -92,8 +127,6 @@ export default function Home() {
             .toLowerCase()
             .includes(queryActivity.toLowerCase());
         });
-
-  const functionCarousel = (data) => setCurrentImage(data);
 
   return (
     <div className="home">
@@ -263,6 +296,46 @@ export default function Home() {
               <p>Easy Booking and skip the line ticket on your phone </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="w-10/12 mx-auto sm:w-9/12 md:w-8/12 mt-16">
+        <div>
+          <h2 className="font-medium text-2xl">Packages In Demand</h2>
+          <p className="text-base mt-1">
+            These are the packages that has won the heart of many trekkers
+          </p>
+          <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-6 mt-12 mb-32 relative">
+            {packages.map((value) => (
+              <Package
+                Image={value.image}
+                icon={faHeart}
+                review={faStar}
+                activities={value.activities}
+                title={value.title}
+                price={value.price}
+              />
+            ))}
+            <button
+              type="button"
+              className="slide bg-white rounded-full flex justify-center px-5 py-4 absolute bottom-1/3 -right-5 drop-shadow-lg"
+            >
+              <FontAwesomeIcon
+                className="text-green-600 text-xl"
+                icon={faChevronRight}
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="h-[70vh] w-full mt-14 mb-20">
+        <img
+          className="w-[100%] h-[100%] object-cover overflow-hidden"
+          src={Slider1}
+          alt="Destination"
+        />
+        <div className="w-10/12 mx-auto sm:w-9/12 md:w-8/12 mt-16 flex">
+          <div className="desti"></div>
+          <div className="desti-slider"></div>
         </div>
       </div>
     </div>
