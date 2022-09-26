@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         success: "#E6FAF0",
       },
+      letterSpacing: {
+        veryTight: "-0.2em",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

@@ -1,4 +1,4 @@
-import { useState, React, useEffect } from "react";
+import { useState, React, useEffect, Fragment } from "react";
 import Slider1 from "/image/slider1.jpg";
 import Slider2 from "/image/slider2.jpg";
 import Slider3 from "/image/langtang.jpg";
@@ -13,12 +13,19 @@ import {
   faMoneyBill,
   faStar,
   faChevronRight,
+  faMinus,
+  faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import Searchbox from "./Searchbox";
 import Package from "./Package";
 
-const carousel = [Slider1, Slider2, Slider3, Slider4];
+const carousel = [
+  { name: "Boudhanath Kathmandu", picture: Slider1 },
+  { name: "Mount Everest Solukhumbu", picture: Slider2 },
+  { name: "Langtang Kathmandu", picture: Slider3 },
+  { name: "Pokhara Kathmandu", picture: Slider4 },
+];
 
 const destination = [
   { id: 1, name: "Kathmandu" },
@@ -33,22 +40,20 @@ const destination = [
   { id: 10, name: "Tilicho Tour" },
 ];
 
-const activity = [
-  { id: 1, destinationId: 1, name: "Rafting" },
-  { id: 2, destinationId: [4, 7, 8], name: "Paragliding" },
-  { id: 3, destinationId: [1, 2, 3, 4, , 5, 6, 9], name: "Sight Seeing" },
-  { id: 4, destinationId: 4, name: "Bunjee Jumping" },
-  { id: 5, destinationId: [1, 2, 3, 4], name: "Camping" },
-  { id: 6, destinationId: 10, name: "Rock Climbing" },
-];
-
 const duration = [
   { id: 1, name: "1 Day" },
   { id: 2, name: "2 Days" },
   { id: 3, name: "5 Days" },
   { id: 4, name: "7 Days" },
 ];
-
+const arrayActivity = [
+  { id: 1, destinationId: [1], name: "Rafting" },
+  { id: 2, destinationId: [4], name: "Paragliding" },
+  { id: 3, destinationId: [1, 2, 3, 4, 5, 6, 9], name: "Sight Seeing" },
+  { id: 4, destinationId: [4], name: "Bunjee Jumping" },
+  { id: 5, destinationId: [1, 2, 3, 4], name: "Camping" },
+  { id: 6, destinationId: [10], name: "Rock Climbing" },
+];
 const packages = [
   {
     id: 1,
@@ -80,8 +85,63 @@ const packages = [
   // },
 ];
 
+const topDestination = [
+  {
+    id: 0,
+    name: "Kathmandu",
+    desc: "This is Kathmandu",
+    image: Slider1,
+  },
+  {
+    id: 1,
+    name: "Solukhumbu",
+    desc: "This is Solukhumbu",
+    image: Slider2,
+  },
+  {
+    id: 2,
+    name: "Langtang",
+    desc: "This is Langtang",
+    image: Slider3,
+  },
+  {
+    id: 3,
+    name: "Pokhara",
+    desc: "This is Pokhara",
+    image: Slider4,
+  },
+  {
+    id: 4,
+    name: "Butwal",
+    desc: "This is Butwal",
+    image: Slider2,
+  },
+  {
+    id: 5,
+    name: "Manakamana",
+    desc: "This is Manakamana",
+    image: Slider3,
+  },
+  {
+    id: 6,
+    name: "Bhairawa",
+    desc: "This is Bhairawa",
+    image: Slider1,
+  },
+  {
+    id: 7,
+    name: "Kalinchowk",
+    desc: "This is Kalinchowk",
+    image: Slider4,
+  },
+];
+
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
+
+  const [currentDestination, setCurrentDestination] = useState(
+    topDestination[0]
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -92,8 +152,18 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [currentImage]);
 
+  const [activity, setActivity] = useState([]);
+  // const [duration, setDuration] = useState([]);
+
   const [queryDestination, setQueryDestination] = useState("");
   const [selectedDestination, setselectedDestination] = useState();
+
+  useEffect(() => {
+    let temp = arrayActivity.filter((curr) => {
+      return curr.destinationId.includes(selectedDestination?.id);
+    });
+    setActivity(temp);
+  }, [selectedDestination]);
 
   const [queryActivity, setQueryActivity] = useState("");
   const [selectedActivity, setSelectedActivity] = useState();
@@ -128,19 +198,35 @@ export default function Home() {
             .includes(queryActivity.toLowerCase());
         });
 
+  const topDestinationCurrent = (action) => {
+    if (action === 0) {
+      setCurrentDestination((curr) =>
+        curr.id === 0
+          ? topDestination[topDestination.length - 1]
+          : topDestination[curr.id - 1]
+      );
+    } else if (action === 1) {
+      setCurrentDestination((curr) =>
+        curr.id === topDestination.length - 1
+          ? topDestination[0]
+          : topDestination[curr.id + 1]
+      );
+    }
+  };
+
   return (
     <div className="home">
       <div className="w-11/12 mx-auto sm:w-10/12 md:w-9/12 flex items-center justify-between">
         <div className="object-cover w-full relative">
           <img
             className="object-cover h-[56vh] w-full rounded-3xl -z-10"
-            src={carousel[currentImage]}
+            src={carousel[currentImage].picture}
             alt="Slide 1"
           />
           <div className="overlay h-full w-full absolute top-0 left-0 opacity-40 bg-gray-800 rounded-3xl"></div>
           <div className="slider-title absolute w-full bottom-24 text-white text-2xl flex justify-center items-center space-x-3">
             <FontAwesomeIcon icon={faCamera} />
-            <p>Mount Everest, Solukhumbu</p>
+            <p>{carousel[currentImage].name}</p>
           </div>
           <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-16 left-1/2">
             <button
@@ -307,6 +393,7 @@ export default function Home() {
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-6 mt-12 mb-32 relative">
             {packages.map((value) => (
               <Package
+                key={value.image}
                 Image={value.image}
                 icon={faHeart}
                 review={faStar}
@@ -327,15 +414,82 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-[70vh] w-full mt-14 mb-20">
+      <div className="h-[70vh] w-full mt-14 mb-20 relative">
         <img
-          className="w-[100%] h-[100%] object-cover overflow-hidden"
-          src={Slider1}
-          alt="Destination"
+          className="w-full h-full object-cover overflow-hidden absolute top-0 left-0"
+          src={currentDestination.image}
+          alt={currentDestination.name}
         />
-        <div className="w-10/12 mx-auto sm:w-9/12 md:w-8/12 mt-16 flex">
-          <div className="desti"></div>
-          <div className="desti-slider"></div>
+        <div className="top-0 left-0 absolute bg-[#0c0c0c80] h-full w-full"></div>
+        <div className="flex w-full h-full items-center justify-center">
+          <div className="w-full h-[50vh] grid grid-cols-12 z-30 absolute items-center justify-center">
+            <div className="desti col-span-4 pl-[150px] pr-12">
+              <p className="text-white text-xl tracking-wide uppercase font-normal">
+                <span className="tracking-veryTight text-xl font-bold">
+                  --------
+                </span>{" "}
+                Top Destination
+              </p>
+              <h1 className="text-white text-4xl tracking-wide font-semibold mt-6">
+                {currentDestination.name}
+              </h1>
+              <p className="text-white text-lg tracking-wide font-normal mt-6">
+                {currentDestination.desc}
+              </p>
+              <button
+                type="button"
+                className="h-auto w-auto text-white bg-green-500 px-2 py-2 rounded-md mt-6"
+              >
+                View Details
+              </button>
+            </div>
+            <div className="desti-slider col-span-8 space-y-5">
+              <div className="flex overflow-hidden lg:gap-x-5 gap-x-2">
+                {topDestination.map((curr, index) => (
+                  <Fragment key={curr.id}>
+                    {index === currentDestination.id || (
+                      <div>
+                        <div className="relative">
+                          <div className="relative h-72 w-64 overflow-hidden rounded-lg">
+                            <img
+                              src={curr.image}
+                              alt={curr.name}
+                              className="h-full w-full object-cover object-center"
+                            />
+                          </div>
+                          <div className="absolute inset-x-0 top-0 flex h-72 items-end justify-start overflow-hidden rounded-lg p-4">
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"
+                            />
+                            <p className="relative text-lg font-semibold text-white">
+                              {curr.name}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
+              <div className="button-group space-x-6 text-end pr-28">
+                <button
+                  type="button"
+                  onClick={() => topDestinationCurrent(0)}
+                  className="px-6 py-4 border border-white text-white rounded-full"
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => topDestinationCurrent(1)}
+                  className="px-6 py-4 border border-white text-white rounded-full"
+                >
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

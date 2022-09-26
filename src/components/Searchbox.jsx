@@ -16,11 +16,7 @@ export default function Searchbox({
   bottomBorder = false,
 }) {
   return (
-    <Combobox
-      as="div"
-      value={selected}
-      onChange={(e) => setSelected(e.target.value)}
-    >
+    <Combobox as="div" value={selected} onChange={setSelected}>
       <Combobox.Label className="block pb-2 text-sm font-normal text-gray-700">
         <FontAwesomeIcon className="text-green-600 mr-2" icon={icon} />
         {label}
