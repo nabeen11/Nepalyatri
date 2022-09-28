@@ -10,4 +10,12 @@
     .secondary_btn {
         @apply bg-primary-grey-50 text-primary-grey-700 hover: focus:outline-none focus:ring- focus:ring-offset-2 inline-flex items-center justify-center px-4 py-3 mr-3 text-sm font-medium border border-transparent rounded-md shadow-sm;
     }
+
+    .swiper-pagination-bullet {
+        @apply w-3 h-3 rounded-full
+    }
+
+    .swiper-pagination {
+        @apply absolute z-30 flex space-x-3 -translate-x-1/2 bottom-16 left-1/2
+    }
 }

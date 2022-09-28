@@ -1,14 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Activities from "./Activities";
-import Destination from "./Destination";
-import Planning from "./Planning";
-import Review from "./Review";
-import Contact from "./Contact";
+import Activities from "../Pages/Activities";
+import Destination from "../Pages/Destination";
+import Planning from "../Pages/Planning";
+import Review from "../Pages/Review";
+import Contact from "../Pages/Contact";
 import App from "../App";
-import Home from "./Home";
-import SingleDestination from "./SingleDestination";
-import Notfound from "./404";
+import Home from "../Pages/Home";
+import SingleDestination from "../Pages/SingleDestination";
+import Notfound from "../Pages/404";
 
 export default function Url() {
   return (

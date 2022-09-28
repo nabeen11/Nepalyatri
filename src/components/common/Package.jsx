@@ -11,19 +11,29 @@ export default function Package({
 }) {
   return (
     <div className="rounded-xl px-2 py-2 border border-gray-200 shadow-lg h-auto">
-      <div className="image relative">
-        <img className="rounded-xl bg-cover" src={Image} alt="Package Image" />
+      <div className="image relative  h-56">
+        <a href="#">
+          <img
+            className="rounded-xl object-cover bg-cover w-full h-full"
+            src={Image}
+            alt="Package Image"
+          />
+        </a>
         <div className="reaction bg-white w-6 rounded-full flex justify-center px-6 py-3 absolute top-2 right-3">
           <FontAwesomeIcon className="text-green-600 text-2xl" icon={icon} />
         </div>
-        <div className="activities absolute -mt-5 bg-[#323c52] w-auto text-center rounded-md ml-5">
-          <h1 className="text-white font-normal uppercase text-base px-2 py-2">
-            {activities}
-          </h1>
-        </div>
+        {activities && (
+          <div className="activities absolute -mt-5 bg-[#323c52] w-auto text-center rounded-md ml-5">
+            <h1 className="text-white font-normal uppercase text-base px-2 py-2">
+              {activities}
+            </h1>
+          </div>
+        )}
       </div>
-      <div className="details mt-10 pb-3">
-        <h1 className="font-medium text-xl ml-3">{title}</h1>
+      <div className={`details pb-3 ${activities ? "mt-7" : "mt-2"}`}>
+        <a href="#" className="font-medium text-xl ml-3">
+          {title}
+        </a>
         <span className="ml-3 mt-1 flex items-center space-x-1">
           <FontAwesomeIcon className="text-yellow-500" icon={review} />
           <FontAwesomeIcon className="text-yellow-500" icon={review} />

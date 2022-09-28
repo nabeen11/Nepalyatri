@@ -1,0 +1,24 @@
+span.swiper-pagination-bullet {
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+}
+
+span.swiper-pagination-bullet-active {
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background-color: #fff;
+    opacity: 1;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 64px !important;
+    left: 50% !important;
+    display: flex;
+    justify-content: center;
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
