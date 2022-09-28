@@ -81,7 +81,7 @@ export default function ActivitiesFilter({ arrayActivity, packages }) {
               Book Your Custom Packages All According To Your Wish
             </p>
             <Link className="py-3 px-3 w-fit bg-green-500 text-lg block text-white rounded-lg">
-              Plan your trip now
+              Plan your trip now Here
             </Link>
           </div>
         </div>
