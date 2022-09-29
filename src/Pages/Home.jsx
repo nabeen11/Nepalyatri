@@ -10,6 +10,9 @@ import HeroSlider from "../Components/home/HeroSlider";
 import TopDestination from "../Components/home/TopDestination";
 import ActivitiesFilter from "../Components/home/ActivitiesFilter";
 import HomePackage from "../Components/home/HomePackage";
+import Testimonial from "../Components/home/Testimonial";
+import Blog from "../Components/home/Blog";
+import Footer from "../Components/common/Footer";
 
 const arrayActivity = [
   {
@@ -82,6 +85,9 @@ export default function Home() {
       <HomePackage arrayActivity={arrayActivity} packages={packages} />
       <TopDestination />
       <ActivitiesFilter arrayActivity={arrayActivity} packages={packages} />
+      <Testimonial />
+      <Blog />
+      <Footer />
     </div>
   );
 }
