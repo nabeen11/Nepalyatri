@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-white">
       <div className="w-11/12 mx-auto sm:w-10/12 md:w-9/12 flex h-24 items-center justify-between px-14">
-        <div className="logo">
+        <div className="logo ">
           <Link to="/">
             <img src={Logo} alt="Travel Logo" />
           </Link>
