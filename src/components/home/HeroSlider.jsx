@@ -108,16 +108,16 @@ export default function HeroSlider({ arrayActivity }) {
             lazy={true}
             loop={true}
             modules={[Autoplay, Lazy, Pagination, Navigation]}
-            className="mySwiper"
+            className="mySwiper homeswiper rounded-3xl overflow-hidden"
           >
             {carousel?.map((value) => (
               <SwiperSlide key={value.name}>
                 <img
-                  className="object-cover h-[56vh] w-full rounded-3xl -z-10 swiper-lazy"
+                  className="object-cover h-[56vh] w-full -z-10 swiper-lazy"
                   src={value.picture}
                   alt="Slide 1"
                 />
-                <div className="overlay h-full w-full absolute top-0 left-0 opacity-40 bg-gray-800 rounded-3xl"></div>
+                <div className="overlay h-full w-full absolute top-0 left-0 opacity-40 bg-gray-800"></div>
                 <div className="slider-title absolute w-full bottom-24 text-white text-2xl flex justify-center items-center space-x-3">
                   <FontAwesomeIcon icon={faCamera} />
                   <p>{value.name}</p>

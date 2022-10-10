@@ -29,8 +29,8 @@ export default function Destination() {
           </div>
 
           {/* Top Group  */}
-          <div className="mt-16 grid grid-cols-2 gap-5">
-            <div className="relative h-80 overflow-hidden">
+          <div className="mt-16 grid grid-cols-6 lg:gap-5 gap-y-3">
+            <div className="relative h-80 overflow-hidden col-span-6 md:col-span-4 lg:col-span-3 md:col-start-2">
               <img
                 className="rounded-xl h-80  w-full object-cover absolute top-0 left-0"
                 src={Kathmandu}
@@ -44,7 +44,7 @@ export default function Destination() {
                 Kathmandu
               </Link>
             </div>
-            <div className="relative h-80 overflow-hidden">
+            <div className="relative h-80 overflow-hidden col-span-6 md:col-span-4 lg:col-span-3 md:col-start-2">
               <img
                 className="rounded-xl h-80  w-full object-cover absolute top-0 left-0"
                 src={Pokhara}
@@ -58,11 +58,11 @@ export default function Destination() {
                 Pokhara
               </Link>
             </div>
-          </div>
-          {/* Mid group  */}
 
-          <div className="mt-5 grid grid-cols-3 gap-5">
-            <div className="relative h-80 overflow-hidden">
+            {/* Mid group  */}
+
+            {/* <div className="mt-5 grid grid-cols-3 gap-5"> */}
+            <div className="relative h-80 overflow-hidden  col-span-6 md:col-span-4 lg:col-span-2 md:col-start-2">
               <img
                 className="rounded-xl h-80  w-full object-cover absolute top-0 left-0"
                 src={Rara}
@@ -76,7 +76,7 @@ export default function Destination() {
                 Rara
               </Link>
             </div>
-            <div className="relative h-80 overflow-hidden">
+            <div className="relative h-80 overflow-hidden col-span-6 md:col-span-4 lg:col-span-2 md:col-start-2">
               <img
                 className="rounded-xl h-80  w-full object-cover absolute top-0 left-0"
                 src={Manakamana}
@@ -90,7 +90,7 @@ export default function Destination() {
                 Manakamana
               </Link>
             </div>
-            <div className="relative h-80 overflow-hidden">
+            <div className="relative h-80 overflow-hidden col-span-6 md:col-span-4 lg:col-span-2 md:col-start-2">
               <img
                 className="rounded-xl h-80  w-full object-cover absolute top-0 left-0"
                 src={Kalinchowk}
@@ -108,7 +108,7 @@ export default function Destination() {
 
           <div className="mt-12 mb-12 bg-[#EDFAF0] rounded-xl text-center py-16 space-y-8">
             <h1 className="text-3xl font-semibold text-[#192638] text-center">
-              Enjoy Summer deals upto{" "}
+              Enjoy Summer deals upto
               <span className="text-5xl font-semibold">30%</span> Discount
             </h1>
             <button className="py-3 px-4 bg-[#19A948] text-white rounded-md ">

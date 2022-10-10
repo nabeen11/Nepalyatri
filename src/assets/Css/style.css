@@ -13,6 +13,14 @@ span.swiper-pagination-bullet-active {
     opacity: 1;
 }
 
+.review-swiper>.swiper-pagination {
+    bottom: 10px !important;
+}
+
+.homeswiper .swiper-pagination {
+    bottom: 64px !important;
+}
+
 .swiper-pagination {
     position: absolute;
     bottom: 64px !important;
