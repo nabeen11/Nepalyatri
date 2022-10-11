@@ -26,7 +26,7 @@ const arrayActivity = [
   { id: 5, destinationId: [1, 2, 3, 4], name: "Camping" },
   { id: 6, destinationId: [10], name: "Rock Climbing" },
 ];
-const packages = [
+export const packages = [
   {
     id: 0,
     title: "Kathmandu Tour - 2 Days",
@@ -57,7 +57,7 @@ const packages = [
   },
   {
     id: 4,
-    title: "rara Tour - 2 Days-1 Night",
+    title: "Rara Tour - 2 Days-1 Night",
     activitiesID: ["Odd", 5],
     price: "10,000",
     image: Rara,

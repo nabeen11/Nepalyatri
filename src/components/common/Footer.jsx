@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="w-full mt-20 h-[573px] relative">
+    <div className="w-full mt-10 h-[573px] relative">
       <img
         className="w-full h-full object-cover object-top"
         src={footbg}

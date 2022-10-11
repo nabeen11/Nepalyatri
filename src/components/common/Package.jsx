@@ -10,7 +10,7 @@ export default function Package({
   price,
 }) {
   return (
-    <div className="rounded-xl px-2 py-2 border border-gray-200 shadow-lg h-auto">
+    <div className="rounded-xl px-2 py-2 border border-gray-200 hover:shadow-lg h-auto">
       <div className="image relative  h-56">
         <a href="#">
           <img
